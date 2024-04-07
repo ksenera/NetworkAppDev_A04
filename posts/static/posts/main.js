@@ -31,13 +31,14 @@ const likeUnlikePosts = ()=> {
 
         $.ajax({
             type: 'POST',
-            url: "", 
+            url: "/like-unlike/", 
             data: {
                 'csrfmiddlewaretoken': csrftoken,
                 'pk': clickedId,
             },
             success: function(response){
                 console.log(response)
+                clickedBtn.textContent = response.liked ? `Unlike (${response.count})` : `Like (${response.count})`
             },
             error: function(error){
                 console.log(error)
@@ -73,8 +74,7 @@ const getData = () => {
                                     </div>
                                     <div class="col-2">
                                         <form class="like-unlike-forms" data-form-id="${element.id}">
-                                            {% csrf_token %}
-                                            <button href="#" class="btn btn-primary" id="like-unlike-${element.id}>${element.liked ? `Unlike (${element.count})` : `Like (${element.count})`}</button>
+                                            <button href="#" class="btn btn-primary" id="like-unlike-${element.id}">${element.liked ? `Unlike (${element.count})` : `Like (${element.count})`}</button>
                                         </form>
                                     </div>
                                 </div>
@@ -82,6 +82,7 @@ const getData = () => {
                         </div>
                     `
                 });
+                likeUnlikePosts()
             }, 100)
             console.log(response.size)
             if (response.size === 0) {
