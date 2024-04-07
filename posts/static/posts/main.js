@@ -19,9 +19,11 @@ $.ajax({
     }
 })
 
+let visible = 3 
+
 $.ajax({
     type: 'GET',
-    url: '/data/',
+    url: `/data/${visible}/`,
     success: function(response){
         console.log(response)
         const data = response.data
@@ -37,10 +39,10 @@ $.ajax({
                         </div>                            
                         <div class="card-footer">
                             <div class="row">
-                                <div class="col-2">
+                                <div class="col-1">
                                     <a href="#" class="btn btn-primary">Details</a>
                                 </div>
-                                <div class="col-2">
+                                <div class="col-1">
                                     <a href="#" class="btn btn-primary">Like</a>
                                 </div>
                             </div>
