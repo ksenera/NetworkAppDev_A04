@@ -12,4 +12,4 @@ class Post(models.Model):
     created = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return st(self.title)
+        return str(self.title)
