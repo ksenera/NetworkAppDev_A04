@@ -27,7 +27,7 @@ def load_post_data_view(request, num_posts):
             'author': obj.author.user.username 
         }
         data.append(item)
-    return JsonResponse({'data':data})
+    return JsonResponse({'data':data[lower:upper], 'size': size })
 
 def hello_world_view(request):
     return JsonResponse({'text': 'hello world'})
