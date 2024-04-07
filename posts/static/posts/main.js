@@ -30,11 +30,20 @@ $.ajax({
             console.log(data)
             data.forEach(element => {
                 postsBox.innerHTML += `
-                    <div class="card-mb2" style="width: 18rem;">
+                    <div class="card mb-2">
                         <div class="card-body">
                             <h5 class="card-title">${element.title}</h5>
                             <p class="card-text">${element.body}</p>
-                            <a href="#" class="btn btn-primary">Details</a>
+                        </div>                            
+                        <div class="card-footer">
+                            <div class="row">
+                                <div class="col-2">
+                                    <a href="#" class="btn btn-primary">Details</a>
+                                </div>
+                                <div class="col-2">
+                                    <a href="#" class="btn btn-primary">Like</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 `
