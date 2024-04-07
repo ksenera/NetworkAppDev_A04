@@ -30,10 +30,16 @@ $.ajax({
             console.log(data)
             data.forEach(element => {
                 postsBox.innerHTML += `
-                    ${element.title} - <b>${element.body}</b><br>
+                    <div class="card-mb2" style="width: 18rem;">
+                        <div class="card-body">
+                            <h5 class="card-title">${element.title}</h5>
+                            <p class="card-text">${element.body}</p>
+                            <a href="#" class="btn btn-primary">Details</a>
+                        </div>
+                    </div>
                 `
             });
-        }, 1000)
+        }, 100)
 
     },
     error: function(error){
