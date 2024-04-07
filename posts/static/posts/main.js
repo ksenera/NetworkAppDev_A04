@@ -26,11 +26,11 @@ const getData = () => {
                             </div>                            
                             <div class="card-footer">
                                 <div class="row">
-                                    <div class="col-1">
+                                    <div class="col-2">
                                         <a href="#" class="btn btn-primary">Details</a>
                                     </div>
-                                    <div class="col-1">
-                                        <a href="#" class="btn btn-primary">Like</a>
+                                    <div class="col-2">
+                                        <a href="#" class="btn btn-primary">${element.liked ? `Unlike (${element.count})` : `Like (${element.count})`}</a>
                                     </div>
                                 </div>
                             </div>
@@ -38,7 +38,14 @@ const getData = () => {
                     `
                 });
             }, 100)
-            console.log(response)
+            console.log(response.size)
+            if (response.size === 0) {
+                endBox.textContent = 'No posts added yet...'
+            }
+            else if (response.size <= visible) {
+                loadBtn.classList.add('not-visible')
+                endBox.textContent = 'No more posts to load...'
+            }
         },
         error: function(error){
             console.log(error)
