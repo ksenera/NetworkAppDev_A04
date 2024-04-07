@@ -3,6 +3,7 @@ console.log('hello world')
 const postsBox = document.getElementById('posts-box')
 const spinnerBox = document.getElementById('spinner-box')
 const loadBtn = document.getElementById('load-btn')
+const endBox = document.getElementById('end-box')
 
 let visible = 3 
 
@@ -37,10 +38,18 @@ const getData = () => {
                     `
                 });
             }, 100)
-    
+            console.log(response)
         },
         error: function(error){
             console.log(error)
         }
     })
 }
+
+loadBtn.addEventListener('click', ()=>{
+    spinnerBox.classList.remove('not-visible')
+    visible += 3
+    getData()
+})
+
+getData()
