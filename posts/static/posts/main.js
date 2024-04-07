@@ -2,6 +2,8 @@ console.log('hello world')
 
 const helloWorldBox = document.getElementById('hello-world')
 const postsBox = document.getElementById('posts-box')
+const spinnerBox = document.getElementById('spinner-box')
+
 
 helloWorldBox.innerHTML = 'hello <b>world</b>'
 
@@ -23,10 +25,11 @@ $.ajax({
     success: function(response){
         console.log(response)
         const data = response.data
+        spinnerBox.classList.add('.not-visible')
         console.log(data)
         data.forEach(element => {
             postsBox.innerHTML += `
-                ${element.title} - <b>${element.body}</b>
+                ${element.title} - <b>${element.body}</b><br>
             `
         });
     },
