@@ -5,6 +5,8 @@ const spinnerBox = document.getElementById('spinner-box')
 const loadBtn = document.getElementById('load-btn')
 const endBox = document.getElementById('end-box')
 
+const postForm = document.getElementById('post-form')
+
 const getCookie =(name) => {
     let cookieValue = null;
     if (document.cookie && document.cookie !== '') {
