@@ -11,6 +11,8 @@ const body = document.getElementById('id_body')
 const csrf = document.getElementsByName('csrfmiddlewaretoken')
 console.log('csrf', csrf[0].value)
 
+const alertBox = document.getElementById('alert-box')
+
 const getCookie =(name) => {
     let cookieValue = null;
     if (document.cookie && document.cookie !== '') {
@@ -137,16 +139,21 @@ postForm.addEventListener('submit', e=>{
                             </div>
                             <div class="col-2">
                                 <form class="like-unlike-forms" data-form-id="${response.id}">
-                                    <button href="#" class="btn btn-primary" id="like-unlike-${response.id}">Like</button>
+                                    <button href="#" class="btn btn-primary" id="like-unlike-${response.id}">Like (0)</button>
                                 </form>
                             </div>
                         </div>
                     </div>
                 </div>
             `)
+            likeUnlikePosts()
+            $('#addPostModal').modal('hide')
+            handleAlerts('success', 'New post added!')
+            postForm.reset()
         },
         error: function(error){
             console.log(error)
+            handleAlerts('danger', 'oops...something went wrong')
         }
     })
 })
